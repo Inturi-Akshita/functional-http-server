@@ -1,10 +1,5 @@
 const http = require('http')
 const fs = require('fs')
-const readline = require('readline')
-const lineDetail = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
 
 let homeContent = ''
 let projectContent = ''
@@ -25,13 +20,13 @@ fs.readFile('project.html', (err, project) => {
 })
 
 fs.readFile('registration.html', (err, registration) => {
-    if (err) {
-      throw err
-    }
-    regContent = registration
-  })
+  if (err) {
+    throw err
+  }
+  regContent = registration
+})
 
-const args = require("minimist")(process.argv.slice(2));
+const args = require('minimist')(process.argv.slice(2))
 http
   .createServer((request, response) => {
     const url = request.url
